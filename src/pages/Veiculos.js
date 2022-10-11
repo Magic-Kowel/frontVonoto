@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getCarsDB, deleteCarDB, addDB, updateDB } from '../api/api';
+import { getCarsDB, deleteCarDB, addDB, updateDB } from '../api/apiVeiculos';
 import { Button, Modal, Form, Table } from 'react-bootstrap';
 
-const Home = () => {
+const Veiculos = () => {
     const [ placas, setPlacas ] = useState('');
     const [ type, setType ] = useState('');
     const [ cars, setCars ] = useState([]);
@@ -152,4 +152,4 @@ const Home = () => {
         </div>
     );
 }
-export default Home;
+export default Veiculos;

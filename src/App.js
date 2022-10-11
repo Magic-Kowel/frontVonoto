@@ -1,11 +1,11 @@
 import {Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Contacts from './pages/Contactos';
+import Veiculos from './pages/Veiculos';
+import Estancias from './pages/Estancias';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/contacts' element={<Contacts />} />
+      <Route path='/' element={<Veiculos />} />
+      <Route path='/Estancias' element={<Estancias />} />
     </Routes>
   );
 }
