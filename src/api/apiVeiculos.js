@@ -1,5 +1,20 @@
-export function getCarsDB(url) {
-    return fetch(url, {
+const url = "http://localhost:4000/";
+export function getCarsDB() {
+    return fetch(`${url}veiculosActivos`, {
+        method:'GET',
+        headers: {
+            "Content-Type":"application/json"
+        }
+    }).then(res => {
+        return res.json();
+    }).then(res => {
+        return res;
+    }).catch(error => {
+        console.log(error);
+    });
+}
+export function getTypesCarsDB() {
+    return fetch(`${url}tipoveiculos`, {
         method:'GET',
         headers: {
             "Content-Type":"application/json"
@@ -13,7 +28,7 @@ export function getCarsDB(url) {
     });
 }
 export function deleteCarDB(idCar) {
-    return fetch('http://localhost:3000/veiculos/'+idCar, {
+    return fetch(`${url}veiculos/${idCar}`, {
         method:"DELETE",
         headers:{
             "Content-Type":"application/json"
@@ -23,7 +38,7 @@ export function deleteCarDB(idCar) {
     })
 }
 export function addDB(data) {
-    return fetch('http://localhost:3000/veiculos',{
+    return fetch(`${url}veiculos`,{
         method:'POST',
         body:JSON.stringify(data),
         headers: {
@@ -34,7 +49,7 @@ export function addDB(data) {
     })
 }
 export function updateDB(data, idCar) {
-    return fetch('http://localhost:3000/veiculos/'+idCar,{
+    return fetch(`${url}veiculos/${idCar}`,{
         method:'PUT',
         body:JSON.stringify(data),
         headers: {
