@@ -1,5 +1,10 @@
 import React,{ useEffect, useState } from 'react';
-import { getEstanciasDB,finalizarEstanciaDB,addEstaciaDB } from '../api/apiEstancias';
+import {
+    getEstanciasDB,
+    finalizarEstanciaDB,
+    addEstaciaDB,
+    resetearEstanciaDB
+} from '../api/apiEstancias';
 import { getCarsDB} from '../api/apiVeiculos';
 import Navegacion from '../components/navegacion';
 import { 
@@ -51,6 +56,13 @@ const Estancias = () =>{
             alert("Finalizar estancia");
         }
     }
+    const resetearEstancia = async () => {
+        const result = await resetearEstanciaDB();
+        if(result.status === 204) {
+            getEstancias(setEstancias);
+            alert("Resetear EstanciaDB");
+        }
+    }
     //Para tomar el valor de los inputs
     const handleIdVeiculo = e => {
         setIdVeiculo(e.target.value)
@@ -71,6 +83,9 @@ const Estancias = () =>{
             <br />
             <Button variant="primary"  onClick={() => aldaEstancia()} >
                Alta Estncia
+            </Button>
+            <Button variant="danger"  onClick={() => resetearEstancia()} >
+                Comienza mes
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -134,11 +149,11 @@ const Estancias = () =>{
                                             <td>{estancia.tipo}</td>
                                             <td>{estancia.coste_estancia}</td>
                                             <td>
-                                                <Button variant="danger" onClick={
-                                                    () => finalizar(estancia.id_estancia)
-                                                }>
-                                                    Finalizar Estancia
-                                                </Button>
+                                                    <Button variant="danger" onClick={
+                                                        () => finalizar(estancia.id_estancia)
+                                                    }>
+                                                        Finalizar Estancia
+                                                    </Button>
                                             </td>
                                         </tr>
                                     </tbody>

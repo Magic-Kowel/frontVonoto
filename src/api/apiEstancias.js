@@ -37,6 +37,16 @@ export function finalizarEstanciaDB(id) {
        return res;
     })
 }
+export function resetearEstanciaDB() {
+    return fetch(`${urlBase}resetear/estancia`, {
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    }).then(res => {
+       return res;
+    })
+}
 export function addEstaciaDB(data) {
     return fetch(`${urlBase}estancias`,{
         method:'POST',
