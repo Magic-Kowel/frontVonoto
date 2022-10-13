@@ -149,11 +149,16 @@ const Estancias = () =>{
                                             <td>{estancia.tipo}</td>
                                             <td>{estancia.coste_estancia}</td>
                                             <td>
-                                                    <Button variant="danger" onClick={
+                                        {console.log(estancia.id_estancia)}
+                                                {
+                                                    estancia.tiempo_fin === null && 
+                                                    <Button variant="danger"onClick={
                                                         () => finalizar(estancia.id_estancia)
                                                     }>
                                                         Finalizar Estancia
                                                     </Button>
+                                                    
+                                                }
                                             </td>
                                         </tr>
                                     </tbody>
